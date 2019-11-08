@@ -37,11 +37,16 @@ function gifMake() {
         }
         //Pause/Play functionality with gif click.
         $(".gif").on("click", function(){
+            //Adding an on/off style var
             var state = $(this).attr("data-state");
+            //Still is the initial state of the gifs
             if(state === "still") {
+                //Var holds new img src
                 var newSrc = $(this).attr("data-animate");
+                //The gif's src and data-state attributes are modified
                 $(this).attr("src", newSrc);
                 $(this).attr("data-state","animate");
+                //New content updated to HTML
                 $("#images").prepend(gifDiv);
             } else {
                 var newSrc = $(this).attr("data-still");
@@ -65,15 +70,17 @@ function btnRender(){
     });
 }
 
-
+//Function runs when user inputs their own topic
 $("#userSubmit").on("click", function(event){
+    //Prevents default submit
     event.preventDefault();
-
+    //Sets var to hold the user's input
     var artCat = $("#userInput").val().trim();
-
+    //Adds user input to topic array
     topics.push(artCat);
-
+    //Calls function to rerender updated buttons
     btnRender();
 });
+
 $(document).on("click", ".gifMake", gifMake);
 btnRender();
