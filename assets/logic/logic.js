@@ -1,3 +1,6 @@
+//Hides border around GIFs until generated
+$("#images").hide();
+
 //Giphy category names in the Art and Design GIFs
 var topics = ["architecture","cinemagraph", "glitch","loop","mash up","pixel","sculpture","timelapse","typography"];
 
@@ -16,7 +19,10 @@ function gifMake() {
             //Creating divs to hold gifs and their attributes
             var gifDiv = $("<div>");
             //Storing rating data
-            var rating = results[i].rating;
+            var ratingRaw = results[i].rating;
+            var rating = ratingRaw.toUpperCase();
+            
+
             //Creating element to hold rating
             var p = $("<p>").text("Rating: " + rating);
             //Creating element to hold gif
@@ -29,9 +35,10 @@ function gifMake() {
                 "data-state": "still",
                 "class": "gif"
             });
-            //Updating html to variables
-            gifDiv.append(p);
+            //Updating html to variables            
             gifDiv.append(artImg);
+            gifDiv.append(p);
+            $("#images").show();
             $("#images").prepend(gifDiv);           
             
         }
@@ -64,8 +71,9 @@ function btnRender(){
 
     //Loops through topics array
     topics.forEach(function(element){
+    var upperEl = element.charAt(0).toUpperCase() + element.slice(1);
     //Creates button named for and valued by the topics array
-        $("#btnDiv").append("<button class='gifMake' data-cat=" + element + "><span>"+element+"</span></button>");
+        $("#btnDiv").append("<button class='gifMake' data-cat=" + element + "><span>"+ upperEl +"</span></button>");
 
     });
 }
@@ -75,12 +83,23 @@ $("#userSubmit").on("click", function(event){
     //Prevents default submit
     event.preventDefault();
     //Sets var to hold the user's input
-    var artCat = $("#userInput").val().trim();
-    //Adds user input to topic array
-    topics.push(artCat);
-    //Calls function to rerender updated buttons
-    btnRender();
+    var userRaw = $("#userInput").val().trim();
+
+    if (userRaw.length === 0) {
+        $("#userInput").attr("placeholder", "Please enter a category")
+    } else {
+        $("#userInput").attr("placeholder", "New Category")
+        //Adds user input to topic array
+        topics.push(userRaw);
+        //Calls function to rerender updated buttons
+        btnRender();
+    }
 });
+
+$("#clearBtn").on("click", function(){
+    $("#images").empty()
+});
+
 
 $(document).on("click", ".gifMake", gifMake);
 btnRender();

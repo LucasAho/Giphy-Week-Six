@@ -3,25 +3,62 @@
     <head>
         <meta charset="UTF-8">
         <title>Art and Design GIFs</title>
+        
+        <!--Bootstrap/CSS link-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="assets\css\style.css">
+
+
     </head>
     <body>
+        <!--Site Container-->
         <div class= "container">
-            <div class="row">
-                <div class= col-12 id="btnDiv"></div>
-                <div id="images" class="col-6"></div>
-                <div class="col-4">
+
+            <!--Header Block-->
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Art Giphy API</h1>
+                    <p class="lead">Choose a topic or create your own</p>
+                </div>
+            </div>
+            <!--Header Block-->
+
+            <!--JS generated buttons-->
+            <div class="row btnHold">
+                <div class= "col-12 mx-2 my-3 px-5" id="btnDiv"></div>
+            </div>
+            <!--JS generated buttons-->
+
+            <!--User function buttons-->
+            <div class="row pt-4 justify-content-center btnHoldb">
+                <!--Clear Page-->
+                <div class="col-5 m-2">
+                    <button id="clearBtn">Clear Page</button>
+                </div>
+                <!--Add Category Form-->
+                <div class="col-5 m-2">
                     <form id="userForm">
                         <label for="userInput">Add Your Own Category</label>
-                        <input type="text" id="userInput"><br>
+                        <input type="text" id="userInput" placeholder="New Category"><br>
                         <input type="submit" id="userSubmit" value="Submit">
                     </form>
                 </div>
             </div>
-        </div>
-                
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets\logic\logic.js"></script>    
+            <!--User function buttons-->
+
+            <!--JS generated GIFs-->
+            <div class="row">
+                <div id="images" class="col-6 pt-3"></div>
+            </div>
+            <!--JS generated GIFs-->
+            
+        </div>  
+        <!--Site Container-->
     </body>
+
+    <!--AJAX Reference-->   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--JS Reference-->    
+    <script src="assets\logic\logic.js"></script>  
+
 </html>

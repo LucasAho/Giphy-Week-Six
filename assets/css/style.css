@@ -1,3 +1,18 @@
+.btnHold {
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: none;
+    border-bottom: none;
+}
+
+.btnHoldb {
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: none;
+}
+
+#images {
+    border: 1px solid rgba(0,0,0,.125);
+    
+}
 #userSubmit {
     height: 25px;
     width: 75px;
